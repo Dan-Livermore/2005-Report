@@ -6,17 +6,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLOutput;
 
-public class Main {
+public class GetEmployeesController {
+    //HTTP URL Connection
     private static HttpURLConnection connection;
     public static void main(String[] args){
-        //HTTP URL Connection
         BufferedReader reader;
         String line;
         StringBuffer responseContent = new StringBuffer();
         try {
-            URL url = new URL("https://web.socem.plymouth.ac.uk/COMP2005/api/Patients");
+            URL url = new URL("https://web.socem.plymouth.ac.uk/COMP2005/api/Employees");
             connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
@@ -27,21 +26,21 @@ public class Main {
             //System.out.println(status); //Tests if connects. 200 = connected
             if (status > 299){
                 reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-                while((line = reader.readLine()) != null) {
-                    responseContent.append(line);
-                }
-                reader.close();
-                } else {
+            } else {
                 reader = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                while((line = reader.readLine()) != null) {
-                    responseContent.append(line);
-                }
             }
+            while((line = reader.readLine()) != null) {
+                responseContent.append(line);
+            }
+            reader.close();
             System.out.print(responseContent.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e){
             e.printStackTrace();
-    }
+        } finally {
+            connection.disconnect();
+        }
     }
 }
+
