@@ -33,7 +33,7 @@ public class GetAllocationController {
                 responseContent.append(line);
             }
             reader.close();
-            System.out.print(responseContent.toString());
+            System.out.print(responseContent);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e){

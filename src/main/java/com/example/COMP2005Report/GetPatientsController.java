@@ -1,5 +1,7 @@
 package com.example.COMP2005Report;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,8 +10,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GetPatientsController {
-    private static HttpURLConnection connection;
-    public static void main(String[] args){
+    private class Patient {
+        int ID;
+        String surname;
+        String forename;
+        String nhsnumber;
+    }
+
+    static HttpURLConnection connection;
+
+    public static void main(String[] args) {
         //HTTP URL Connection
         BufferedReader reader;
         String line;
@@ -24,22 +34,27 @@ public class GetPatientsController {
 
             int status = connection.getResponseCode();
             //System.out.println(status); //Tests if connects. 200 = connected
-            if (status > 299){
+            if (status > 299) {
                 reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
             } else {
                 reader = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                }
-            while((line = reader.readLine()) != null) {
+            }
+            while ((line = reader.readLine()) != null) {
                 responseContent.append(line);
             }
             reader.close();
-            System.out.print(responseContent.toString());
+            System.out.print(responseContent);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             connection.disconnect();
         }
+        Gson gson = new Gson();
+        Patient patient = gson.fromJson(responseContent.toString(), Patient.class);
     }
 }
+
+
+
