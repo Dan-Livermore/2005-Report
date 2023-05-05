@@ -9,7 +9,7 @@ public class PatientsSeenByStaffTest {
 
     @Test
     public void TestDBConnectionTest(){
-        assertEquals(200, PatientsSeenByStaff.GetPatientsController.DBConnection());
-        assertNotEquals(300, PatientsSeenByStaff.GetPatientsController.DBConnection());
+        assertEquals(200, PatientsSeenByStaff.GetPatientsController.Patient.DBConnection());
+        assertNotEquals(300, PatientsSeenByStaff.GetPatientsController.Patient.DBConnection());
     }
 }
