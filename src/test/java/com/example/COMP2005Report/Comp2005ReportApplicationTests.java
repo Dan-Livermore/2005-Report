@@ -11,11 +11,11 @@ class Comp2005ReportApplicationTests {
 
 	@Test
 	void index(){
-		String expected = "hi"; //arrange
-		main x = new main();
-		String actual = x.index();
+		String expected = "200"; // Successful connection
+		PatientsSeenByStaff output = new PatientsSeenByStaff();
+		String actual = output.index();
 		assertEquals(expected, actual);
-		assertNotEquals("Something else",actual);
+		assertNotEquals("300",actual);
 	}
 
 }

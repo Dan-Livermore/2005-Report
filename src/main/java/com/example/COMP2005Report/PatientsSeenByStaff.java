@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class main {
-    //GetMapping("/")
-    //String index(){
-    //    return "hi";
-    //}
+public class PatientsSeenByStaff {
+        @GetMapping("/")
+        String index(){
+            return "200";
+        }
 }
