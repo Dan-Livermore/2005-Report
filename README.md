@@ -47,6 +47,3 @@ Task 4: Average duration by staff
 - Does not use all data
 
 - Incorrect use of algorithm
-
-
-
