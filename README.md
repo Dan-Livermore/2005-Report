@@ -1,6 +1,7 @@
 # COMP 2005 Service Testing
 
 FIX GETS DATA TWICE FROM API
+DO UNIT TESTS FOR EACH TRY sCATCH
 
 Unit Tests:
 - Database connection passes (200)   OK

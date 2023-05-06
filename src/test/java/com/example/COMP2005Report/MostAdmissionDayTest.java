@@ -1,2 +1,4 @@
-package com.example.COMP2005Report;public class MostAdmissionDayTest {
+package com.example.COMP2005Report;
+
+public class MostAdmissionDayTest {
 }
