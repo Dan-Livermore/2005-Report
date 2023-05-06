@@ -9,26 +9,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
-
-import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
-import static com.example.COMP2005Report.Controller.JsonParser.JsonParse;
 
 public class EmployeesController {
-    public class Employee {
+    public static class Employee {
         private static int ID;
         private static String surname;
         private static String forename;
 
-        public int getID() {
+        public static int getID() {
             return Employee.ID;
         }
 
-        public String getSurname() {
+        public static String getSurname() {
             return Employee.surname;
         }
 
-        public String getForename() {
+        public static String getForename() {
             return Employee.forename;
         }
 

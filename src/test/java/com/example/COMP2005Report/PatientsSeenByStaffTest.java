@@ -34,4 +34,8 @@ public class PatientsSeenByStaffTest {
         assertNotEquals(300, AdmissionsController.Admission.DBConnection());
     }
 
+    @Test
+    public void GetDataTest(){
+        assertEquals(3,PatientsSeenByStaff.GetData());
+    }
 }
