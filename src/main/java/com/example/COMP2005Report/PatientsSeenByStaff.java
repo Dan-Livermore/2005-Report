@@ -1,6 +1,7 @@
 package com.example.COMP2005Report;
 
-import com.google.gson.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.util.List;
 
 @RestController
 public class PatientsSeenByStaff {
@@ -65,7 +63,6 @@ public class PatientsSeenByStaff {
                     while ((line = reader.readLine()) != null) {
                         responseContent.append(line);
                     }
-                    System.out.print(responseContent);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -73,19 +70,21 @@ public class PatientsSeenByStaff {
                 } finally {
                     connection.disconnect();
                 }
-                FillGson(responseContent.toString());
+                parse(responseContent.toString());
                 return status;
             }
 
-            public static void FillGson(String jsoninput) {
-                Gson gson = new Gson();
-                Patient[] patient = gson.fromJson(jsoninput, Patient[].class);
-                for (int i=0; i<patient.length; i++) {
-                    System.out.println(i);
-                    System.out.println(patient[i]);
+            public static String parse(String responseContent) {
+                JSONArray patients = new JSONArray(responseContent);
+                for (int i = 0; i < patients.length(); i++) {
+                    JSONObject patient = patients.getJSONObject(i);
+                    int id = patient.getInt("id");
+                    String surname = patient.getString("surname");
+                    String forename = patient.getString("forename");
+                    String nhs = patient.getString("nhsNumber");
+                    System.out.println(id + "," + surname + "," + forename + "," + nhs);
                 }
-                System.out.println("hello");
-                System.out.println(patient);
+                return "Yowza";
             }
         }
     }

@@ -1,5 +1,7 @@
 # COMP 2005 Service Testing
 
+FIX GETS DATA TWICE FROM API
+
 Unit Tests:
 - Database connection passes (200)   OK
 - Database connection fails  (204) No Content
