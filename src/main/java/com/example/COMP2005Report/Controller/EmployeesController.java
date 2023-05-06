@@ -9,7 +9,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
+import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
 import static com.example.COMP2005Report.Controller.JsonParser.JsonParse;
 
 public class EmployeesController {
@@ -65,6 +67,17 @@ public class EmployeesController {
             }
             JsonParse(responseContent.toString());
             return status;
+        }
+
+        public static JSONArray JsonParse(String data) {
+            JSONArray employees = new JSONArray(data);
+            for (int i = 0; i < employees.length(); i++) {
+                JSONObject employee = employees.getJSONObject(i);
+                int id = employee.getInt("id");
+                String surname = employee.getString("surname");
+                String forename = employee.getString("forename");
+            }
+            return employees;
         }
     }
 }

@@ -10,12 +10,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
-import static com.example.COMP2005Report.Controller.JsonParser.JsonParse;
 
 public class AdmissionsController {
     public class Admission {
@@ -76,20 +73,19 @@ public class AdmissionsController {
             JsonParse(responseContent.toString());
             return status;
         }
-        
+
         public static JSONArray JsonParse(String data) {
-            JSONArray allocations = new JSONArray(data);
-            for (int i = 0; i < allocations.length(); i++) {
-                JSONObject allocation = allocations.getJSONObject(i);
-                int id = allocation.getInt("id");
-                int admissionid = allocation.getInt("admissionID");
-                int employeeid = allocation.getInt("employeeID");
-                String startTime = allocation.getString("startTime");
-                Date starttime = DateParsing(startTime);
-                String endTime = allocation.getString("endTime");
-                Date endtime = DateParsing(endTime);
+            JSONArray admissions = new JSONArray(data);
+            for (int i = 0; i < admissions.length(); i++) {
+                JSONObject admission = admissions.getJSONObject(i);
+                int id = admission.getInt("id");
+                String admissionDate = admission.getString("admissionDate");
+                Date admissiondate = DateParsing(admissionDate);
+                String dischargeDate = admission.getString("dischargeDate");
+                Date dischargedate = DateParsing(dischargeDate);
+                int patientID = admission.getInt("patientID");
             }
-            return allocations;
+            return admissions;
         }
     }
 }
