@@ -9,32 +9,51 @@ import org.json.JSONObject;
 
 
 public class PatientsSeenByStaff {
-    public static JSONObject GetData() {
-        JSONArray employees = EmployeesController.Employee.DBConnection();
-        JSONArray allocations = AllocationsController.Allocation.DBConnection();
-        JSONArray admissions = AdmissionsController.Admission.DBConnection();
-        JSONArray patients = PatientsController.Patient.DBConnection();
 
+    private static JSONArray employees;
+    private static JSONArray allocations;
+    private static JSONArray admissions;
+    private static JSONArray patients;
+
+    public static void GetData() {
+        employees = EmployeesController.Employee.DBConnection();
+        allocations = AllocationsController.Allocation.DBConnection();
+        admissions = AdmissionsController.Admission.DBConnection();
+        patients = PatientsController.Patient.DBConnection();
+    }
+    public static void SelectEmpID(){
         int empID = 4; //HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
 
         for (int emp = 0; emp < employees.length(); emp++) {
             for (int all = 0; all < allocations.length(); all++) {
                 if (employees.getJSONObject(emp).get("id").equals(empID) && allocations.getJSONObject(all).get("employeeID").equals(empID)) {
-
-                    for (int adm = 0; adm < admissions.length(); adm++) {
-                        if (allocations.getJSONObject(all).get("admissionID").equals(admissions.getJSONObject(adm).get("id"))) {
-
-                            for (int pat = 0; pat < patients.length(); pat++){
-                                if (admissions.getJSONObject(adm).get("patientID").equals(patients.getJSONObject(pat).get("id"))){
-                                    System.out.println(patients.getJSONObject(pat));
-                                    return patients.getJSONObject(pat);
-                                }
-                            }
-                        }
-                    }
+                    SelectAdmissions(all);
                 }
             }
         }
-        return null;
+    }
+
+    public static void SelectAdmissions(int all){
+        for (int adm = 0; adm < admissions.length(); adm++) {
+            if (allocations.getJSONObject(all).get("admissionID").equals(admissions.getJSONObject(adm).get("id"))) {
+                DisplayPatients(adm);
+            }
+        }
+    }
+
+    public static JSONArray DisplayPatients(int adm){
+        JSONArray allpatients = new JSONArray();
+        for (int pat = 0; pat < patients.length(); pat++){
+            if (admissions.getJSONObject(adm).get("patientID").equals(patients.getJSONObject(pat).get("id"))){
+                System.out.println(patients.getJSONObject(pat));
+                allpatients.put(patients.getJSONObject(pat));
+            }
+        }
+        return allpatients;
+    }
+
+    public static void main(){
+        GetData();
+        SelectEmpID();
     }
 }

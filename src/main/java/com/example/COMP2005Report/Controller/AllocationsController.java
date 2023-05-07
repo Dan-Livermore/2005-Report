@@ -13,8 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
-
 public class AllocationsController {
     public class Allocation {
         private static int ID;
@@ -93,9 +91,7 @@ public class AllocationsController {
                 int admissionid = allocation.getInt("admissionID");
                 int employeeid = allocation.getInt("employeeID");
                 String startTime = allocation.getString("startTime");
-                Date starttime = DateParsing(startTime);
                 String endTime = allocation.getString("endTime");
-                Date endtime = DateParsing(endTime);
             }
             return allocations;
         }

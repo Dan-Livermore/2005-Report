@@ -13,10 +13,18 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class MostAdmissionDay {
+    public static JSONArray admissions;
+
+    public static String[] days = {"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
+    public static int[] day = {0,0,0,0,0,0,0};
+
+    public static ArrayList<String> names = new ArrayList<>();
     public static void GetData() {
-        String[] days = {"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
-        int[] day = {0,0,0,0,0,0,0};
-        JSONArray admissions = AdmissionsController.Admission.DBConnection();
+        admissions = AdmissionsController.Admission.DBConnection();
+    }
+
+    private static void ConvertDay() {
+
         for (int adm = 0; adm < admissions.length(); adm++) {
             String date = admissions.getJSONObject(adm).get("admissionDate").toString();
             // Parse the date string into a LocalDateTime object
@@ -24,26 +32,36 @@ public class MostAdmissionDay {
 
             // Get the day of the week as a string
             String weekday = dischargeDateTime.getDayOfWeek().toString();
-
             int index = Arrays.asList(days).indexOf(weekday);
             day[index] += 1;
-
-            int max = day[0]; // Assume the first number is the maximum
-
-            ArrayList<String> names = new ArrayList<>();
-            names.add("MONDAY");
-            for (int i = 1; i < day.length; i++) {
-                if (day[i] > max) {
-                    max = day[i];
-                    names.clear(); // Reset the list since a new maximum is found
-                    names.add(days[i]); // Add the new maximum's index to the list
-                } else if (day[i] == max) {
-                    names.add(days[i]); // Add the index to the list if it has the same value as the current maximum
-                }
-            }
-
-            System.out.println(names);
-
+            CalculateFrequentDay();
         }
+    }
+
+    private static void CalculateFrequentDay() {
+        int max = day[0]; // Assume the first number is the maximum
+
+
+        names.add("MONDAY");
+        for (int i = 1; i < day.length; i++) {
+            if (day[i] > max) {
+                max = day[i];
+                names.clear(); // Reset the list since a new maximum is found
+                names.add(days[i]); // Add the new maximum's index to the list
+            } else if (day[i] == max) {
+                names.add(days[i]); // Add the index to the list if it has the same value as the current maximum
+            }
+        }
+    }
+    private static void DisplayDays() {
+        System.out.println(names);
+    }
+
+
+    public static void main(){
+        GetData();
+        ConvertDay();
+        CalculateFrequentDay();
+        DisplayDays();
     }
 }
