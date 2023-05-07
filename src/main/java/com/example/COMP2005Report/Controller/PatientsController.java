@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.Date;
 
 import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
-import static com.example.COMP2005Report.Controller.JsonParser.JsonParse;
 
 public class PatientsController {
     public class Patient {
@@ -38,10 +37,13 @@ public class PatientsController {
         }
 
         static HttpURLConnection connection;
+        static int status = 0;
+        public static int getStatus() {
+            return PatientsController.Patient.status;
+        }
 
         public static int DBConnection() {
             //HTTP URL Connection
-            int status = 0;
             BufferedReader reader;
             String line;
             StringBuffer responseContent = new StringBuffer();

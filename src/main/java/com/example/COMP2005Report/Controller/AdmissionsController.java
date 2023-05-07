@@ -38,10 +38,13 @@ public class AdmissionsController {
         }
 
         static HttpURLConnection connection;
+        static int status = 0;
+        public static int getStatus() {
+            return AdmissionsController.Admission.status;
+        }
 
         public static int DBConnection() {
             //HTTP URL Connection
-            int status = 0;
             BufferedReader reader;
             String line;
             StringBuffer responseContent = new StringBuffer();

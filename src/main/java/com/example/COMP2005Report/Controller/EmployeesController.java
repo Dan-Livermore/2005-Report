@@ -28,11 +28,15 @@ public class EmployeesController {
             return Employee.forename;
         }
 
-        static HttpURLConnection connection;
 
-        public static int DBConnection() {
+        static HttpURLConnection connection;
+        static int status = 0;
+        public static int getStatus() {
+            return Employee.status;
+        }
+
+        public static JSONArray DBConnection() {
             //HTTP URL Connection
-            int status = 0;
             BufferedReader reader;
             String line;
             StringBuffer responseContent = new StringBuffer();
@@ -61,8 +65,8 @@ public class EmployeesController {
             } finally {
                 connection.disconnect();
             }
-            JsonParse(responseContent.toString());
-            return status;
+            JSONArray data = JsonParse(responseContent.toString());
+            return data;
         }
 
         public static JSONArray JsonParse(String data) {

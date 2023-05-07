@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
-import static com.example.COMP2005Report.Controller.JsonParser.JsonParse;
 
 public class AllocationsController {
     public class Allocation {
@@ -46,10 +45,13 @@ public class AllocationsController {
         }
 
         static HttpURLConnection connection;
+        static int status = 0;
+        public static int getStatus() {
+            return AdmissionsController.Admission.status;
+        }
 
-        public static int DBConnection() {
+        public static JSONArray DBConnection() {
             //HTTP URL Connection
-            int status = 0;
             BufferedReader reader;
             String line;
             StringBuffer responseContent = new StringBuffer();
@@ -78,8 +80,8 @@ public class AllocationsController {
             } finally {
                 connection.disconnect();
             }
-            JsonParse(responseContent.toString());
-            return status;
+            JSONArray data = JsonParse(responseContent.toString());
+            return data;
         }
 
 
