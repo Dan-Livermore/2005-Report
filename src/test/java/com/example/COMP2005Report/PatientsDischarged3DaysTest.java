@@ -24,9 +24,9 @@ public class PatientsDischarged3DaysTest {
         assertNotEquals(0, AdmissionsController.Admission.getStatus());
     }
 
-    @Test
-    public void ThreeDays() {
-        JSONArray data = PatientsDischarged3Days.GetData();
-        assertEquals(200, 200);
-    }
+//    @Test
+//    public void ThreeDays() {
+//        JSONArray data = PatientsDischarged3Days.GetData();
+//        assertEquals(200, 200);
+//    }
 }

@@ -15,6 +15,8 @@ public class PatientsSeenByStaff {
     private static JSONArray admissions;
     private static JSONArray patients;
 
+    public static int empID =4;//HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
+
     public static void GetData() {
         employees = EmployeesController.Employee.DBConnection();
         allocations = AllocationsController.Allocation.DBConnection();
@@ -22,7 +24,6 @@ public class PatientsSeenByStaff {
         patients = PatientsController.Patient.DBConnection();
     }
     public static void SelectEmpID(){
-        int empID = 4; //HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
 
         for (int emp = 0; emp < employees.length(); emp++) {
             for (int all = 0; all < allocations.length(); all++) {
