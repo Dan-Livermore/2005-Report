@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import static com.example.COMP2005Report.Controller.DateParser.DateParsing;
@@ -82,10 +84,15 @@ public class AdmissionsController {
             for (int i = 0; i < admissions.length(); i++) {
                 JSONObject admission = admissions.getJSONObject(i);
                 int id = admission.getInt("id");
+
                 String admissionDate = admission.getString("admissionDate");
-                Date admissiondate = DateParsing(admissionDate);
+                LocalDateTime admdate = LocalDateTime.parse(admissionDate);
+                LocalDate admissiondate = admdate.toLocalDate();
+
                 String dischargeDate = admission.getString("dischargeDate");
-                Date dischargedate = DateParsing(dischargeDate);
+                LocalDateTime disdate = LocalDateTime.parse(dischargeDate);
+                LocalDate dischargedate = disdate.toLocalDate();
+
                 int patientID = admission.getInt("patientID");
             }
             return admissions;

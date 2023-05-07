@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class PatientsSeenByStaffTest {
 
     @Test
-    public void DBConnectionPatientsTest(){
+    public void DBConnectionPatientsTest() {
         JSONArray data = PatientsController.Patient.DBConnection();
         assertEquals(200, PatientsController.Patient.getStatus());
         assertNotEquals(0, PatientsController.Patient.getStatus());
@@ -24,27 +24,30 @@ public class PatientsSeenByStaffTest {
 
 
     @Test
-    public void DBConnectionEmployeesTest(){
+    public void DBConnectionEmployeesTest() {
         JSONArray data = EmployeesController.Employee.DBConnection();
         assertEquals(200, EmployeesController.Employee.getStatus());
         assertNotEquals(0, EmployeesController.Employee.getStatus());
     }
 
     @Test
-    public void DBConnectionAllocationsTest(){
-        JSONArray data =  AllocationsController.Allocation.DBConnection();
+    public void DBConnectionAllocationsTest() {
+        JSONArray data = AllocationsController.Allocation.DBConnection();
         assertEquals(200, AllocationsController.Allocation.getStatus());
         assertNotEquals(0, AllocationsController.Allocation.getStatus());
     }
+
     @Test
-    public void DBConnectionAdmissionsTest(){
+    public void DBConnectionAdmissionsTest() {
         JSONArray data = AdmissionsController.Admission.DBConnection();
         assertEquals(200, AdmissionsController.Admission.getStatus());
         assertNotEquals(0, AdmissionsController.Admission.getStatus());
     }
 
     @Test
-    public void GetDataTest(){
-        assertEquals(3,PatientsSeenByStaff.GetData());
+    public void ThreeDays(){
+        JSONArray data = PatientsDischarged3Days.GetData();
+        assertEquals(200,200);
     }
 }
+

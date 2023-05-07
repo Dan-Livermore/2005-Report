@@ -5,10 +5,11 @@ import com.example.COMP2005Report.Controller.AllocationsController;
 import com.example.COMP2005Report.Controller.EmployeesController;
 import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class PatientsSeenByStaff {
-    public static int GetData() {
+    public static JSONObject GetData() {
         JSONArray employees = EmployeesController.Employee.DBConnection();
         JSONArray allocations = AllocationsController.Allocation.DBConnection();
         JSONArray admissions = AdmissionsController.Admission.DBConnection();
@@ -26,6 +27,7 @@ public class PatientsSeenByStaff {
                             for (int pat = 0; pat < patients.length(); pat++){
                                 if (admissions.getJSONObject(adm).get("patientID").equals(patients.getJSONObject(pat).get("id"))){
                                     System.out.println(patients.getJSONObject(pat));
+                                    return patients.getJSONObject(pat);
                                 }
                             }
                         }
@@ -33,6 +35,6 @@ public class PatientsSeenByStaff {
                 }
             }
         }
-        return 3;
+        return null;
     }
 }
