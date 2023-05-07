@@ -43,7 +43,7 @@ public class AdmissionsController {
             return AdmissionsController.Admission.status;
         }
 
-        public static int DBConnection() {
+        public static JSONArray DBConnection() {
             //HTTP URL Connection
             BufferedReader reader;
             String line;
@@ -73,8 +73,8 @@ public class AdmissionsController {
             } finally {
                 connection.disconnect();
             }
-            JsonParse(responseContent.toString());
-            return status;
+            JSONArray data = JsonParse(responseContent.toString());
+            return data;
         }
 
         public static JSONArray JsonParse(String data) {

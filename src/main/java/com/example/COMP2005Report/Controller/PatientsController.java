@@ -39,10 +39,10 @@ public class PatientsController {
         static HttpURLConnection connection;
         static int status = 0;
         public static int getStatus() {
-            return PatientsController.Patient.status;
+            return Patient.status;
         }
 
-        public static int DBConnection() {
+        public static JSONArray DBConnection() {
             //HTTP URL Connection
             BufferedReader reader;
             String line;
@@ -72,8 +72,8 @@ public class PatientsController {
             } finally {
                 connection.disconnect();
             }
-            JsonParse(responseContent.toString());
-            return status;
+            JSONArray data = JsonParse(responseContent.toString());
+            return data;
         }
 
         public static JSONArray JsonParse(String data) {

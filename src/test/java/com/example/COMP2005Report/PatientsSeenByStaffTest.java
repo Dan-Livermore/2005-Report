@@ -17,9 +17,9 @@ public class PatientsSeenByStaffTest {
 
     @Test
     public void DBConnectionPatientsTest(){
-        JSONArray data = EmployeesController.Employee.DBConnection();
-        assertEquals(200, PatientsController.Patient.DBConnection());
-        assertNotEquals(300, PatientsController.Patient.DBConnection());
+        JSONArray data = PatientsController.Patient.DBConnection();
+        assertEquals(200, PatientsController.Patient.getStatus());
+        assertNotEquals(0, PatientsController.Patient.getStatus());
     }
 
 
@@ -32,15 +32,15 @@ public class PatientsSeenByStaffTest {
 
     @Test
     public void DBConnectionAllocationsTest(){
-        JSONArray data = EmployeesController.Employee.DBConnection();
+        JSONArray data =  AllocationsController.Allocation.DBConnection();
         assertEquals(200, AllocationsController.Allocation.getStatus());
-        assertNotEquals(300, AllocationsController.Allocation.getStatus());
+        assertNotEquals(0, AllocationsController.Allocation.getStatus());
     }
     @Test
     public void DBConnectionAdmissionsTest(){
-        JSONArray data = EmployeesController.Employee.DBConnection();
-        assertEquals(200, AdmissionsController.Admission.DBConnection());
-        assertNotEquals(300, AdmissionsController.Admission.DBConnection());
+        JSONArray data = AdmissionsController.Admission.DBConnection();
+        assertEquals(200, AdmissionsController.Admission.getStatus());
+        assertNotEquals(0, AdmissionsController.Admission.getStatus());
     }
 
     @Test
