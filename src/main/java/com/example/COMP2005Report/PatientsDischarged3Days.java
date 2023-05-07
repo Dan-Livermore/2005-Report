@@ -42,7 +42,6 @@ public class PatientsDischarged3Days {
                 people.put(admissions.getJSONObject(adm));
             }
 
-            //LocalDate start =  admissions.getJSONObject(adm).get("admissionDate");
         }
         return people;
     }
