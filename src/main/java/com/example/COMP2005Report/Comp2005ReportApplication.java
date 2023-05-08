@@ -25,7 +25,7 @@ public class Comp2005ReportApplication {
 
 	@GetMapping("/q2")
 	public static String q2(String[] args){
-		JSONArray output = PatientsDischarged3Days.GetData();
+		JSONArray output = PatientsDischarged3Days.ConvertToDate();
 		return "The patients discharged in under 3 days are:" + output;
 	}
 
@@ -40,7 +40,6 @@ public class Comp2005ReportApplication {
 		long output = AverageDuration.GetDuration();
 		return "The average duration is :" + output + "minutes";
 	}
-}
 
 		@GetMapping("/A")
 		static String index(){

@@ -27,31 +27,28 @@ public class AverageDuration {
         for (int emp = 0; emp < employees.length(); emp++) {
             for (int all = 0; all < allocations.length(); all++) {
                 if (employees.getJSONObject(emp).get("id").equals(empID) && allocations.getJSONObject(all).get("employeeID").equals(empID)) {
-                    ConvertToTime();
+
+                    for (int adm = 0; adm < allocations.length(); adm++) {
+                        Object start = allocations.getJSONObject(adm).get("startTime");
+                        Object end = allocations.getJSONObject(adm).get("endTime");
+
+
+                        LocalDateTime starttime = LocalDateTime.parse(start.toString());
+
+                        LocalDateTime endtime = LocalDateTime.parse(end.toString());
+
+                        try {
+
+                            long days = ChronoUnit.MINUTES.between(starttime, endtime);
+                            System.out.println(days);
+                            duration.add(days);
+                        } catch (UnsupportedTemporalTypeException e){
+                            duration.add(0L);
+                        }
+                    }
                 }
             }
         }
-    }
-
-
-    public static void ConvertToTime(){
-        for (int adm = 0; adm < allocations.length(); adm++){
-
-        Object start=allocations.getJSONObject(adm).get("startTime");
-        Object end=allocations.getJSONObject(adm).get("endTime");
-
-        LocalDateTime starttime = LocalDateTime.parse(start.toString());
-        LocalDateTime endtime = LocalDateTime.parse(end.toString());
-        CalculateDuration(starttime, endtime);
-        }
-    }
-
-    public static void CalculateDuration(LocalDateTime starttime, LocalDateTime endtime){
-        long days = ChronoUnit.MINUTES.between(starttime, endtime);
-        System.out.println(days);
-        duration.add(days);
-    }
-    public static void CalculateAverage(){
         long sum = 0;
         long avg = 0;
         if (duration.size() > 0) {
@@ -62,6 +59,7 @@ public class AverageDuration {
             avg = sum / duration.size();
         }
         System.out.println(avg + "minutes");
+
         return avg;
     }
 }

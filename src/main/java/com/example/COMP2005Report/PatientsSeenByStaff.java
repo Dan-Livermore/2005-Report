@@ -7,7 +7,6 @@ import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
 
 
-@RestController
 public class PatientsSeenByStaff {
     private static JSONArray employees;
     private static JSONArray allocations;
