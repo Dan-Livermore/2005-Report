@@ -55,6 +55,7 @@ public class PatientsDischarged3DaysTest {
         LocalDate admissiondate = LocalDate.of(2020,10,10);
 
         long days = ChronoUnit.DAYS.between(admissiondate,dischargedate);
+        System.out.println(days);
         if (days <= 3){
             System.out.println("Success");
         }
@@ -80,6 +81,7 @@ public class PatientsDischarged3DaysTest {
         LocalDate admissiondate = LocalDate.of(2020,10,10);
 
         long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
+        System.out.println(days);
         if (days <= 3){
             System.out.println("Success");
         }
