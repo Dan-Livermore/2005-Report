@@ -1,11 +1,5 @@
-name: runtests
-
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
-
+name: CI
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
