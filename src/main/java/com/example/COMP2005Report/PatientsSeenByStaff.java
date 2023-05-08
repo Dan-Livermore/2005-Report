@@ -5,9 +5,11 @@ import com.example.COMP2005Report.Controller.AllocationsController;
 import com.example.COMP2005Report.Controller.EmployeesController;
 import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
-import org.json.JSONObject;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
+@RestController
 public class PatientsSeenByStaff {
 
     private static JSONArray employees;
@@ -17,6 +19,9 @@ public class PatientsSeenByStaff {
 
     public static int empID =4;//HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
 
+    public static void GetID(String ID){
+        empID = Integer.parseInt(ID);
+    }
     public static void GetData() {
         employees = EmployeesController.Employee.DBConnection();
         allocations = AllocationsController.Allocation.DBConnection();
@@ -24,7 +29,6 @@ public class PatientsSeenByStaff {
         patients = PatientsController.Patient.DBConnection();
     }
     public static void SelectEmpID(){
-
         for (int emp = 0; emp < employees.length(); emp++) {
             for (int all = 0; all < allocations.length(); all++) {
                 if (employees.getJSONObject(emp).get("id").equals(empID) && allocations.getJSONObject(all).get("employeeID").equals(empID)) {
@@ -42,6 +46,7 @@ public class PatientsSeenByStaff {
         }
     }
 
+    @GetMapping("/Q1")
     public static JSONArray DisplayPatients(int adm){
         JSONArray allpatients = new JSONArray();
         for (int pat = 0; pat < patients.length(); pat++){
@@ -54,6 +59,7 @@ public class PatientsSeenByStaff {
     }
 
     public static void main(){
+        //GetID(String ID);
         GetData();
         SelectEmpID();
     }

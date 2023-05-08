@@ -1,21 +1,12 @@
 package com.example.COMP2005Report;
 
 import com.example.COMP2005Report.Controller.AdmissionsController;
-import com.example.COMP2005Report.Controller.AllocationsController;
-import com.example.COMP2005Report.Controller.EmployeesController;
 import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
-import org.json.JSONObject;
-import org.springframework.cglib.core.Local;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 public class PatientsDischarged3Days {
     public static JSONArray admissions;
@@ -34,11 +25,11 @@ public class PatientsDischarged3Days {
 
             LocalDateTime admdate = LocalDateTime.parse(start.toString());
             LocalDate admissiondate = admdate.toLocalDate();
-            System.out.println(admissiondate);
+            //System.out.println(admissiondate);
 
             LocalDateTime disdate = LocalDateTime.parse(end.toString());
             LocalDate dischargedate = disdate.toLocalDate();
-            System.out.println(dischargedate);
+            //System.out.println(dischargedate);
             CalculateDays(adm, admissiondate, dischargedate);
         }
     }
@@ -46,7 +37,7 @@ public class PatientsDischarged3Days {
     public static void CalculateDays(int adm, LocalDate dischargedate, LocalDate admissiondate){
         long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
         if (days > 3){
-            System.out.println(admissions.getJSONObject(adm));
+            //System.out.println(admissions.getJSONObject(adm));
             people.put(admissions.getJSONObject(adm));
         }
     }

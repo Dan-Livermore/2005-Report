@@ -7,6 +7,7 @@ import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
 import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.DependsOn;
 
@@ -16,6 +17,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PatientsSeenByStaffTest {
+
+    @BeforeEach
+    public void Startup() {
+        PatientsSeenByStaff patientsseenbystaff = new PatientsSeenByStaff();
+    }
 
     @Test
     public void DBConnectionPatientsTest() {
@@ -47,22 +53,21 @@ public class PatientsSeenByStaffTest {
     }
 
     @Test
-    public void GetEmpIDTest() {
+    public void GetEmpIDEqualsTest() {
         //Arrange
         int actual = PatientsSeenByStaff.empID;
 
         //Assert
         assertEquals(4, actual);
         assertNotEquals(0, actual);
-        assertTrue(actual > -1);
-        assertFalse(actual > 300);
 
     }
 
     @Test
-    public void xxx(){
-
+    public void GetEmpIDinRangeTest() {
+        int actual = PatientsSeenByStaff.empID;
+        assertTrue(actual > -1);
+        assertFalse(actual > 300);
     }
-
 }
 
