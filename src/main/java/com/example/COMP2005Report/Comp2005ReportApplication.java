@@ -19,7 +19,7 @@ public class Comp2005ReportApplication {
 
 	@GetMapping("/q1")
 	public static String q1(String[] args){
-		JSONArray output = PatientsSeenByStaff.GetData();
+		JSONArray output = PatientsSeenByStaff.main();
 		return "The patients seen by staff member 4 are " + output.getJSONObject(0);
 	}
 
