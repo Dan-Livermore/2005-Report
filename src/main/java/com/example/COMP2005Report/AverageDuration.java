@@ -50,11 +50,14 @@ public class AverageDuration {
             }
         }
         long sum = 0;
-        for (int i = 0; i < duration.size(); i++){
-            System.out.println(duration.get(i));
-            sum += duration.get(i);
+        long avg = 0;
+        if (duration.size() > 0) {
+            for (int i = 0; i < duration.size(); i++) {
+                System.out.println(duration.get(i));
+                sum += duration.get(i);
+            }
+            avg = sum / duration.size();
         }
-        long avg = sum / duration.size();
         System.out.println(avg + "minutes");
 
         return avg;
