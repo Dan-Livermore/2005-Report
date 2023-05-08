@@ -44,10 +44,5 @@ public class PatientsSeenByStaffTest {
         assertNotEquals(0, AdmissionsController.Admission.getStatus());
     }
 
-    @Test
-    public void run(){
-        PatientsSeenByStaff x = new PatientsSeenByStaff();
-        JSONArray output = x.GetData();
-    }
 }
 

@@ -36,13 +36,10 @@ public class PatientsDischarged3Days {
             LocalDate dischargedate = disdate.toLocalDate();
             System.out.println(dischargedate);
             long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
-            if (days > 3){
+            if (days <= 3){
                 System.out.println(admissions.getJSONObject(adm));
                 String id = admissions.getJSONObject(adm).get("patientID").toString();
                 int ID = Integer.parseInt(id);
-                System.out.println("HELP");
-                System.out.println(patients.getJSONObject(ID));
-                System.out.println("DONE");
                 people.put(patients.getJSONObject(ID));
 
             }

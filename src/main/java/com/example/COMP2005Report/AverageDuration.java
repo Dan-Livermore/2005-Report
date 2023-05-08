@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AverageDuration {
+    public static JSONArray employees;
+    public static JSONArray allocations;
     public static long GetDuration(){
-        JSONArray employees = EmployeesController.Employee.DBConnection();
-        JSONArray allocations = AllocationsController.Allocation.DBConnection();
+        employees = EmployeesController.Employee.DBConnection();
+        allocations = AllocationsController.Allocation.DBConnection();
 
         List<Long> duration = new ArrayList<Long>();
 
