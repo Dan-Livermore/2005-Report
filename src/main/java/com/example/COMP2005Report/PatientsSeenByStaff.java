@@ -9,11 +9,13 @@ import org.json.JSONObject;
 
 
 public class PatientsSeenByStaff {
-    public static JSONObject GetData() {
+    public static JSONArray GetData() {
         JSONArray employees = EmployeesController.Employee.DBConnection();
         JSONArray allocations = AllocationsController.Allocation.DBConnection();
         JSONArray admissions = AdmissionsController.Admission.DBConnection();
         JSONArray patients = PatientsController.Patient.DBConnection();
+
+        JSONArray people = new JSONArray();
 
         int empID = 4; //HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
 
@@ -27,7 +29,7 @@ public class PatientsSeenByStaff {
                             for (int pat = 0; pat < patients.length(); pat++){
                                 if (admissions.getJSONObject(adm).get("patientID").equals(patients.getJSONObject(pat).get("id"))){
                                     System.out.println(patients.getJSONObject(pat));
-                                    return patients.getJSONObject(pat);
+                                    people.put(patients.getJSONObject(pat));
                                 }
                             }
                         }
@@ -35,6 +37,6 @@ public class PatientsSeenByStaff {
                 }
             }
         }
-        return null;
+        return people;
     }
 }

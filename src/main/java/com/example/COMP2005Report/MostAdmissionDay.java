@@ -1,22 +1,19 @@
 package com.example.COMP2005Report;
 
 import com.example.COMP2005Report.Controller.AdmissionsController;
-import com.example.COMP2005Report.Controller.AllocationsController;
-import com.example.COMP2005Report.Controller.EmployeesController;
-import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 public class MostAdmissionDay {
-    public static void GetData() {
-        String[] days = {"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
-        int[] day = {0,0,0,0,0,0,0};
+    public static ArrayList<String> GetData() {
+        String[] days = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"};
+        int[] day = {0, 0, 0, 0, 0, 0, 0};
         JSONArray admissions = AdmissionsController.Admission.DBConnection();
+        ArrayList<String> names = null;
         for (int adm = 0; adm < admissions.length(); adm++) {
             String date = admissions.getJSONObject(adm).get("admissionDate").toString();
             // Parse the date string into a LocalDateTime object
@@ -30,7 +27,7 @@ public class MostAdmissionDay {
 
             int max = day[0]; // Assume the first number is the maximum
 
-            ArrayList<String> names = new ArrayList<>();
+            names = new ArrayList<>();
             names.add("MONDAY");
             for (int i = 1; i < day.length; i++) {
                 if (day[i] > max) {
@@ -45,5 +42,6 @@ public class MostAdmissionDay {
             System.out.println(names);
 
         }
+        return names;
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AverageDuration {
-    public static void GetDuration(){
+    public static long GetDuration(){
         JSONArray employees = EmployeesController.Employee.DBConnection();
         JSONArray allocations = AllocationsController.Allocation.DBConnection();
 
@@ -55,6 +55,6 @@ public class AverageDuration {
         long avg = sum / duration.size();
         System.out.println(avg + "minutes");
 
-
+        return avg;
     }
 }

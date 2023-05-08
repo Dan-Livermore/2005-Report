@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/Allocation/get/")
 public class main {
     @GetMapping("/get")
     @RequestMapping(value = "/get", method = RequestMethod.GET)

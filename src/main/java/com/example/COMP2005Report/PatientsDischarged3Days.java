@@ -17,12 +17,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class PatientsDischarged3Days {
+
+    static JSONArray admissions = AdmissionsController.Admission.DBConnection();
+    static JSONArray patients = PatientsController.Patient.DBConnection();
+    static JSONArray people = new JSONArray();
     public static JSONArray GetData() {
-        JSONArray admissions = AdmissionsController.Admission.DBConnection();
-        JSONArray patients = PatientsController.Patient.DBConnection();
-        JSONArray people = new JSONArray();
-
-
 
         for (int adm = 0 ; adm < admissions.length(); adm++){
             Object start = admissions.getJSONObject(adm).get("admissionDate");
@@ -39,7 +38,13 @@ public class PatientsDischarged3Days {
             long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
             if (days > 3){
                 System.out.println(admissions.getJSONObject(adm));
-                people.put(admissions.getJSONObject(adm));
+                String id = admissions.getJSONObject(adm).get("patientID").toString();
+                int ID = Integer.parseInt(id);
+                System.out.println("HELP");
+                System.out.println(patients.getJSONObject(ID));
+                System.out.println("DONE");
+                people.put(patients.getJSONObject(ID));
+
             }
 
         }
