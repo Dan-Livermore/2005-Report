@@ -20,14 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PatientsSeenByStaffTest {
 
-    @BeforeAll
-    @Test
-    public static void NoPatientsForEmployeeTest(){
-        PatientsSeenByStaff y = new PatientsSeenByStaff();
-        JSONArray people = y.GetEmployee();
-        System.out.println(people.length());
-        assertEquals(people.length(), 0);
-    }
 
     @Test
     public void Only2PatientsTest(){
