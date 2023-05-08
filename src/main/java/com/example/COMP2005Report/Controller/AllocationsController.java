@@ -18,7 +18,6 @@ public class AllocationsController {
         private static int ID;
         private static int admissionID;
         private static int employeeID;
-
         private static Date startTime;
         private static Date endTime;
 
@@ -42,10 +41,12 @@ public class AllocationsController {
             return endTime;
         }
 
+
+
         static HttpURLConnection connection;
         static int status = 0;
         public static int getStatus() {
-            return AdmissionsController.Admission.status;
+            return status;
         }
 
         public static JSONArray DBConnection() {

@@ -16,10 +16,11 @@ import java.util.List;
 public class AverageDuration {
     public static JSONArray employees;
     public static JSONArray allocations;
-    public static List<Long> duration = new ArrayList<Long>();
-    public static void GetData() {
+    public static long GetDuration(){
         employees = EmployeesController.Employee.DBConnection();
         allocations = AllocationsController.Allocation.DBConnection();
+
+        List<Long> duration = new ArrayList<Long>();
 
         int empID = 4; //HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
 
@@ -52,16 +53,15 @@ public class AverageDuration {
     }
     public static void CalculateAverage(){
         long sum = 0;
-        for (int i = 0; i < duration.size(); i++){
-            System.out.println(duration.get(i));
-            sum += duration.get(i);
+        long avg = 0;
+        if (duration.size() > 0) {
+            for (int i = 0; i < duration.size(); i++) {
+                System.out.println(duration.get(i));
+                sum += duration.get(i);
+            }
+            avg = sum / duration.size();
         }
-        long avg = sum / duration.size();
         System.out.println(avg + "minutes");
-    }
-    public static void main(){
-        GetData();
-        ConvertToTime();
-        CalculateAverage();
+        return avg;
     }
 }

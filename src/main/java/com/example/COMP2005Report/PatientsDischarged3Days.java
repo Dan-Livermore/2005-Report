@@ -9,13 +9,12 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class PatientsDischarged3Days {
-    public static JSONArray admissions;
-    public static JSONArray patients;
-    public static JSONArray people = new JSONArray();
-    public static void GetData() {
-        admissions = AdmissionsController.Admission.DBConnection();
-        patients = PatientsController.Patient.DBConnection();
-    }
+
+
+    static JSONArray admissions = AdmissionsController.Admission.DBConnection();
+    static JSONArray patients = PatientsController.Patient.DBConnection();
+    static JSONArray people = new JSONArray();
+    public static JSONArray GetData() {
 
     public static void ConvertToDate(){
         for (int adm = 0 ; adm < admissions.length(); adm++){
@@ -29,10 +28,16 @@ public class PatientsDischarged3Days {
 
             LocalDateTime disdate = LocalDateTime.parse(end.toString());
             LocalDate dischargedate = disdate.toLocalDate();
-            //System.out.println(dischargedate);
-            CalculateDays(adm, admissiondate, dischargedate);
-        }
-    }
+
+            System.out.println(dischargedate);
+            long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
+            if (days <= 3){
+                System.out.println(admissions.getJSONObject(adm));
+                String id = admissions.getJSONObject(adm).get("patientID").toString();
+                int ID = Integer.parseInt(id);
+                people.put(patients.getJSONObject(ID));
+
+            }
 
     public static void CalculateDays(int adm, LocalDate dischargedate, LocalDate admissiondate){
         long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
