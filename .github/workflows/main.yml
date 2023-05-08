@@ -1,24 +1,26 @@
-name: first workflow
+name: runtests
 
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  
+jobs:
+  runthetests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 17
+    - name: gradle
+      uses: gradle/gradle-build-action@v2
+    - name: chmod
+      run: chmod +x ./gradlew
+    - name: test
+      run: ./gradlew test
 
 permissions:
   contents: read
-
-jobs:
-  first-job:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Hello
-      run: echo Hello There!!!
-    - name: Update Package Manager
-      run: sudo apt update
-    - name: Install JDK
-      run: sudo apt install -y default-jdk
-    - name: Show Java Version
-      run: java -version
