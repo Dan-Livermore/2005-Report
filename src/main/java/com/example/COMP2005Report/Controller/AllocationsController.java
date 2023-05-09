@@ -44,9 +44,9 @@ public class AllocationsController {
 
 
         static HttpURLConnection connection;
-        static int status = 0;
+        static int repsonse = 0;
         public static int getStatus() {
-            return status;
+            return repsonse;
         }
 
         public static JSONArray DBConnection() {
@@ -63,8 +63,8 @@ public class AllocationsController {
                 connection.setReadTimeout(5000);
 
 
-                status = connection.getResponseCode();
-                if (status > 299) {
+                repsonse = connection.getResponseCode();
+                if (repsonse > 299) {
                     reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 } else {
                     reader = new BufferedReader(new InputStreamReader((connection.getInputStream())));

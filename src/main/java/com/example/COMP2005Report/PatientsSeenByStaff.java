@@ -26,6 +26,7 @@ public class PatientsSeenByStaff {
 
         int empID = 4; //HARD CODED BUT NEEDED!!!!!!!!!!!!!!!
         try {
+            // Iterates through all 4 items from the API, and when the ID's match continue until patients by the given employee id are found
             for (int emp = 0; emp < employees.length(); emp++) {
                 for (int all = 0; all < allocations.length(); all++) {
                     if (employees.getJSONObject(emp).get("id").equals(empID) && allocations.getJSONObject(all).get("employeeID").equals(empID)) {

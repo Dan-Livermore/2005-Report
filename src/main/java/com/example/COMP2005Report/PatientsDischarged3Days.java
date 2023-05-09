@@ -20,19 +20,19 @@ public class PatientsDischarged3Days {
     }
 
     public static JSONArray ConvertToDate() {
+        // Gets all allocations and separates the start and end dates
         for (int adm = 0; adm < admissions.length(); adm++) {
             Object start = admissions.getJSONObject(adm).get("admissionDate");
             Object end = admissions.getJSONObject(adm).get("dischargeDate");
 
-
+            // Converts them into date datatype
             LocalDateTime admdate = LocalDateTime.parse(start.toString());
             LocalDate admissiondate = admdate.toLocalDate();
-            //System.out.println(admissiondate);
 
             LocalDateTime disdate = LocalDateTime.parse(end.toString());
             LocalDate dischargedate = disdate.toLocalDate();
 
-            System.out.println(dischargedate);
+            // Calculates if the value is less than 3 and if so adds to the array
             long days = ChronoUnit.DAYS.between(dischargedate, admissiondate);
             if (days <= 3) {
                 System.out.println(admissions.getJSONObject(adm));
