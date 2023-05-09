@@ -7,8 +7,8 @@ The program creates endpoints for a maternity system that completes the followin
 3.	Displaying the day of the week with the most frequent admissions
 4.	Displaying the average duration of a certain staff member.
 
-Unit Tests: 31
-Integration Tests: 4
-Functional Tests: 4
+Unit Tests: 31 <br>
+Integration Tests: 4 <br>
+Functional Tests: 4 <br>
 
 Developed in Java, using IntelliJ 2022
