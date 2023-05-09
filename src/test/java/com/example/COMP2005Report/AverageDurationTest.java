@@ -35,7 +35,7 @@ public class AverageDurationTest {
         List<Long> duration = new ArrayList<Long>();
         long sum = 0;
         long avg = 0;
-        if (duration.size() != 0) {
+        if (duration.size() > 0) {
             for (int i = 0; i < duration.size(); i++) {
                 System.out.println(duration.get(i));
                 sum += duration.get(i);
@@ -54,7 +54,7 @@ public class AverageDurationTest {
 
         long sum = 0;
         long avg = 0;
-        if (duration.size() != 0) {
+        if (duration.size() > 0) {
             for (int i = 0; i < duration.size(); i++) {
                 System.out.println(duration.get(i));
                 sum += duration.get(i);

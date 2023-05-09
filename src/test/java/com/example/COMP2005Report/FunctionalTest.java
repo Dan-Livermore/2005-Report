@@ -30,7 +30,7 @@ public class FunctionalTest {
                 .getResponse()
                 .getContentAsString();
 
-        assertEquals(x, "The patients seen by staff member 4 are {\"forename\":\"Heather\",\"surname\":\"Carter\",\"id\":2,\"nhsNumber\":\"2224446666\"}");
+        assertEquals("The patients seen by staff member 4 are {\"forename\":\"Heather\",\"surname\":\"Carter\",\"id\":2,\"nhsNumber\":\"2224446666\"}",x);
     }
 
     @Test

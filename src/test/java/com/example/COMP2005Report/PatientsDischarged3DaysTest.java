@@ -23,7 +23,7 @@ public class PatientsDischarged3DaysTest {
     @Test
     public void DBConnectionPatientsTest() {
         PatientsDischarged3Days startup = new PatientsDischarged3Days();
-        JSONArray output = startup.ConvertToDate();
+        JSONArray output = PatientsDischarged3Days.ConvertToDate();
         assertEquals(200, PatientsController.Patient.getStatus());
         assertNotEquals(0, PatientsController.Patient.getStatus());
     }
@@ -32,7 +32,7 @@ public class PatientsDischarged3DaysTest {
     public void DBConnectionAdmissionsTest() {
         PatientsDischarged3Days startup = new PatientsDischarged3Days();
 
-        JSONArray output = startup.ConvertToDate();
+        JSONArray output = PatientsDischarged3Days.ConvertToDate();
         assertEquals(200, AdmissionsController.Admission.getStatus());
         assertNotEquals(0, AdmissionsController.Admission.getStatus());
     }
@@ -119,7 +119,7 @@ public class PatientsDischarged3DaysTest {
     }
 
     @Test
-    public void Condition1MaxTimeTest() {
+    public void ConditionMaxTimeTest() {
         LocalDate dischargedate = LocalDate.of(9999, 12, 31);
         LocalDate admissiondate = LocalDate.of(0001, 1, 1);
 
@@ -131,33 +131,3 @@ public class PatientsDischarged3DaysTest {
         assertEquals(3652058L, days);
     }
 }
-
-
-//    @Test
-//    public void ConvertDateExpectedTest(){
-//        PatientsDischarged3Days startup = new PatientsDischarged3Days();
-//        String json = "{\"id\":\"1\",\"admissionDate\":2023-05-05T12:00:00,\"dischargeDate\":\"2023-05-07T12:00:00\",\"patientID\":\"4\"}";
-//        JSONObject mockdata = new JSONObject(json);
-//        startup.admissions.put(mockdata);
-//        startup.ConvertToDate();
-//        assertEquals(0,0);
-//    }
-
-//    @Test
-//    public void CaluclateDaysTest(){
-//        PatientsDischarged3Days startup = new PatientsDischarged3Days();
-//        startup.main();
-//        String date1 = "2020-10-10";
-//        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        LocalDate start = LocalDate.parse(date1, formatter1);
-//
-//        String date2 = "2020-10-12";
-//        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        LocalDate end = LocalDate.parse(date2, formatter2);
-//
-//        startup.CalculateDays(0, start, end);
-//        System.out.println(startup.people);
-//
-//
-//        JSONArray emptyArray = new JSONArray();
-//    }
