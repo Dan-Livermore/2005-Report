@@ -13,4 +13,4 @@ Functional Tests: 4 <br>
 
 Developed in Java, using IntelliJ 2022
 
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/Dan-Livermore/2005-Report/actions/workflows/main.yml/badge.svg)
