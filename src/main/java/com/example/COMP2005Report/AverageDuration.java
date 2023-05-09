@@ -1,12 +1,9 @@
 package com.example.COMP2005Report;
 
-import com.example.COMP2005Report.Controller.AdmissionsController;
 import com.example.COMP2005Report.Controller.AllocationsController;
 import com.example.COMP2005Report.Controller.EmployeesController;
-import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.UnsupportedTemporalTypeException;

@@ -5,15 +5,8 @@ import com.example.COMP2005Report.Controller.AllocationsController;
 import com.example.COMP2005Report.Controller.EmployeesController;
 import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
-import org.json.JSONObject;
-import org.junit.After;
-import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 

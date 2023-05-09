@@ -1,17 +1,13 @@
 package com.example.COMP2005Report;
 
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.juli.logging.Log;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.servlet.HandlerExecutionChain;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

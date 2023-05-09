@@ -3,18 +3,11 @@ package com.example.COMP2005Report;
 import com.example.COMP2005Report.Controller.AdmissionsController;
 import com.example.COMP2005Report.Controller.PatientsController;
 import org.json.JSONArray;
-import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-import static com.example.COMP2005Report.PatientsDischarged3Days.admissions;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
